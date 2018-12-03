@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello Vue.js!</title>
+    <script src="./vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="addButton">click me</button>
+        <ul>
+            <li v-for="todo in todos">
+                <span>{{ todo.text }}</span>
+                <button v-on:click="removeTodo($index)">X</button>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                todos: [{
+                        text: 'HelloWorld1'
+                    },
+                    {
+                        text: 'HelloWorld2'
+                    },
+                    {
+                        text: 'HelloWorld3'
+                    }
+                ],
+                num : 3,
+            },
+            methods: {
+                addButton: function() {
+                    this.num = this.num + 1;
+                    var text = 'HelloWorld' + this.num;
+                    if (text) {
+                        this.todos.push({
+                            text: text
+                        })
+                    };
+                },
+                removeTodo: function(index) {
+                    this.todos.splice(index, 1)
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>
